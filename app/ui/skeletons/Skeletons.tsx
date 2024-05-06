@@ -16,7 +16,7 @@ export const StoryCardSkeleton = () => {
 
 export const UserSkeleton = () => {
     return (
-        <div className="border py-3 px-5 flex flex-col gap-2.5 rounded-md mt-6 w-1/4 animate-pulse">
+        <div className="border py-3 px-5 flex flex-col gap-2.5 w-11/12 rounded-md md:w-1/2 lg:w-1/4 animate-pulse">
             <div className="h-4 w-full bg-gray-100 rounded-full"></div>
             <div className="h-4 w-full bg-gray-100 rounded-full"></div>
             <div className="h-4 w-full bg-gray-100 rounded-full"></div>
