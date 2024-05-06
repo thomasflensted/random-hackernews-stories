@@ -17,7 +17,6 @@ export async function getStoryIds(count: number): Promise<number[] | null> {
 }
 
 export async function getTopStories(): Promise<StoryWithUserScore[] | null> {
-
     try {
         const topStoryIds = await getStoryIds(10);
         if (!topStoryIds) throw Error("An error occured");
