@@ -1,19 +1,12 @@
 export type Story = {
-    id: number,
-    deleted?: boolean,
-    type: 'job' | 'story' | 'comment' | 'poll' | 'pollopt',
     by: string,
-    time: number,
-    text?: string,
-    dead?: boolean,
-    parent?: number,
-    poll?: number,
-    kids?: number[],
-    url: string
+    descendants: number,
+    id: number,
     score: number,
+    time: number,
     title: string,
-    parts?: number[],
-    descendants?: number,
+    type: 'story',
+    url: string
 }
 
 export type StoryWithUserScore = Story & { userScore: number };
@@ -22,5 +15,6 @@ export type UserDetails = {
     created: number,
     id: string,
     karma: number,
-    submitted: number[]
+    submitted: number[],
+    about?: string
 }

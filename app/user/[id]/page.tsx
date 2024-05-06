@@ -1,23 +1,17 @@
-import { getUserStories } from "@/app/lib/data";
-import Heading from "@/app/ui/home/Heading"
-import StoryCard from "@/app/ui/story/StoryCard";
-import { notFound } from "next/navigation";
+import Heading from "@/app/ui/global/Heading";
+import { UserSkeleton } from "@/app/ui/skeletons/Skeletons";
+import BackBtn from "@/app/ui/user/BackBtn";
+import User from "@/app/ui/user/User";
+import { Suspense } from "react";
 
 export default async function page({ params }: { params: { id: string } }) {
-
-    const storiesByUser = await getUserStories(params.id);
-    if (!storiesByUser) notFound();
-
     return (
         <div className="w-full flex flex-col items-center">
-            <Heading text={"Submissions"} margin="my-5" />
-            <main className="grid grid-cols-2 w-1/2 gap-2">
-                {storiesByUser.map(story =>
-                    <StoryCard
-                        key={story.id}
-                        story={story} />
-                )}
-            </main>
+            <Heading text="User Overview" margin="my-5" size="text-lg" />
+            <Suspense fallback={<UserSkeleton />}>
+                <User userId={params.id} />
+            </Suspense>
+            <BackBtn />
         </div>
     )
 }

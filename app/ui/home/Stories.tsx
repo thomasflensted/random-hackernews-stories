@@ -1,22 +1,24 @@
 import { notFound } from "next/navigation";
-import StoryCard from "../story/StoryCard"
 import { getTopStories } from "../../lib/data";
+import StoryCard from "../story/StoryCard";
 
 export async function Stories() {
 
     const topStories = await getTopStories();
     if (!topStories) notFound();
 
-    const sortedByScore = topStories.sort((a, b) => a.score > b.score ? 1 : -1);
+    topStories.sort((a, b) => a.score > b.score ? 1 : -1);
     const highestScore = Math.max(...topStories.map(story => story.score));
+    const highestScoringUser = [...topStories].sort((a, b) => b.userScore > a.userScore ? 1 : -1)[0].by;
 
     return (
         <>
-            {sortedByScore.map(story =>
+            {topStories.map(story =>
                 <StoryCard
                     key={story.id}
                     story={story}
-                    highestScore={highestScore} />
+                    highestScore={highestScore}
+                    highestScoringUser={highestScoringUser} />
             )}
         </>
     )

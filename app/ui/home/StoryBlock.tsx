@@ -1,6 +1,6 @@
 import { Suspense } from "react"
-import { StoryCardSkeleton } from "../skeletons/Skeletons"
 import { Stories } from "./Stories"
+import { StoryCardSkeleton } from "../skeletons/Skeletons"
 
 const StoryBlock = () => {
     return (

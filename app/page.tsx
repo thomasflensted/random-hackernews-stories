@@ -1,7 +1,8 @@
 import RefreshBtn from "./ui/home/RefreshBtn";
 import { revalidatePath } from "next/cache";
-import Heading from "./ui/home/Heading";
+
 import StoryBlock from "./ui/home/StoryBlock";
+import Heading from "./ui/global/Heading";
 
 export default function Home() {
 

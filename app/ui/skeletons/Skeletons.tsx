@@ -1,5 +1,3 @@
-import UserDetail from "../user/UserDetail";
-
 export const StoryCardSkeleton = () => {
     const skeletons = [];
     for (let i = 0; i < 10; i++) {
@@ -18,7 +16,7 @@ export const StoryCardSkeleton = () => {
 
 export const UserSkeleton = () => {
     return (
-        <div className="border py-3 px-5 flex flex-col gap-2.5 rounded-md mt-6 w-1/5 animate-pulse">
+        <div className="border py-3 px-5 flex flex-col gap-2.5 rounded-md mt-6 w-1/4 animate-pulse">
             <div className="h-4 w-full bg-gray-100 rounded-full"></div>
             <div className="h-4 w-full bg-gray-100 rounded-full"></div>
             <div className="h-4 w-full bg-gray-100 rounded-full"></div>

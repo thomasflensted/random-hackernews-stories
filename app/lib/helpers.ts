@@ -8,3 +8,14 @@ export const formatDate = (rawDate: number) => {
 export const formatScore = (rawScore: number) => {
     return new Intl.NumberFormat('da').format(rawScore)
 }
+
+export const getRandomIds = (arr: number[], storyCount: number): number[] => {
+
+    let randomStories = [];
+    const arrLength = arr.length;
+    for (let i = 0; i < storyCount; i++) {
+        const randomNum = Math.round(Math.random() * arrLength);
+        randomStories.push(arr[randomNum]);
+    }
+    return randomStories;
+}
