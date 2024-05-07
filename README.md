@@ -16,7 +16,7 @@ Næsten alle komponenter renderes på serveren, kun nogle få knapper er client-
 #### Til diskussion:
 - map() vs hardcoding i StoryDetails.tsx
 - Hvordan dataen hentes: Promise.all() vs. for loop.
-- Caching - samme historier vises ved refresh.
+- Caching vs suspense
 - Udfordringer ved præsentation of brugers posts
 - dangerouslySetHtml
 - Error handling - lige nu bare catch-all

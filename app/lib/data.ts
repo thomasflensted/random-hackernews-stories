@@ -20,9 +20,8 @@ export async function getTopStories(): Promise<StoryWithUserScore[] | null> {
     try {
         const topStoryIds = await getStoryIds(10);
         if (!topStoryIds) throw Error("An error occured");
-        const promises = topStoryIds.map(id =>
-            fetch(`${baseUrl}/item/${id}.json`, { cache: 'no-cache' }).then(res => res.json()))
-        const stories = await Promise.all(promises);
+        const stories = await Promise.all(topStoryIds.map(id =>
+            fetch(`${baseUrl}/item/${id}.json`, { cache: 'no-cache' }).then(res => res.json())))
         const storiesWithAuthorScores = appendUserScore(stories);
         return storiesWithAuthorScores;
     } catch (error) {
@@ -51,7 +50,7 @@ export async function appendUserScore(stories: Story[]): Promise<StoryWithUserSc
 export async function getUserDetails(authorId: string): Promise<UserDetails | null> {
 
     try {
-        const res = await fetch(`${baseUrl}/user/${authorId}.json`);
+        const res = await fetch(`${baseUrl}/user/${authorId}.json`, { cache: 'no-cache' });
         if (!res.ok) throw Error("An error occured.");
         const data: UserDetails = await res.json();
         return data;
