@@ -21,7 +21,7 @@ export async function getTopStories(): Promise<StoryWithUserScore[] | null> {
         const topStoryIds = await getStoryIds(10);
         if (!topStoryIds) throw Error("An error occured");
         const promises = topStoryIds.map(id =>
-            fetch(`${baseUrl}/item/${id}.json`).then(res => res.json()))
+            fetch(`${baseUrl}/item/${id}.json`, { cache: 'no-cache' }).then(res => res.json()))
         const stories = await Promise.all(promises);
         const storiesWithAuthorScores = appendUserScore(stories);
         return storiesWithAuthorScores;
