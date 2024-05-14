@@ -9,7 +9,7 @@ export async function getStoryIds(count: number): Promise<number[] | null> {
         const res = await fetch(baseUrl + "/topstories.json");
         if (!res.ok) throw Error("An error occured")
         const parsedArr = await res.json();
-        return getRandomIds(parsedArr, count);
+        return getRandomIds(parsedArr, count); // -> [1234,5678, ..., 9012,3456]
     } catch (error) {
         console.log(error);
         return null;
@@ -22,8 +22,8 @@ export async function getTopStories(): Promise<StoryWithUserScore[] | null> {
         if (!topStoryIds) throw Error("An error occured");
         const stories = await Promise.all(topStoryIds.map(id =>
             fetch(`${baseUrl}/item/${id}.json`, { cache: 'no-cache' }).then(res => res.json())))
-        const storiesWithAuthorScores = appendUserScore(stories);
-        return storiesWithAuthorScores;
+        const storiesWithAuthorScores = await appendUserScore(stories);
+        return storiesWithAuthorScores; // -> [{storydata + userscore}, ..., {storydata + userscore}]
     } catch (error) {
         console.log(error);
         return null;

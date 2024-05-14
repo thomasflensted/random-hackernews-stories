@@ -6,17 +6,12 @@ Forsiden består af 2 bestanddele: En blok med historier fra Hacker News, og en 
 #### Detaljer
 Næsten alle komponenter renderes på serveren, kun nogle få knapper er client-side renderet. Animationen af story-score-baren er lavet i Framer Motion.
 
-#### Vis:
-- High score bar
-- Medalje ved bedste bruger
-- Skeletons (indsæt forsinkelse)
-- Hvordan user score tilføjes hver historie
-- Mobilvisning
-
 #### Til diskussion:
 - map() vs hardcoding i StoryDetails.tsx
 - Hvordan dataen hentes: Promise.all() vs. for loop.
+- Tilføjelse af userscore til post objekt
 - Caching vs suspense
 - Udfordringer ved præsentation of brugers posts
 - dangerouslySetHtml
 - Error handling - lige nu bare catch-all
+- Ville have renderet brugers posts, men det krævede resolve af alle brugers submissions
